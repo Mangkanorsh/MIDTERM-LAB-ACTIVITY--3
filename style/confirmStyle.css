@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #36393F;
+    font-family: sans-serif;
+    color: #fff;
+  }
+
+  .container {
+    background-color: #202225;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  form {
+    display: inline-block;
+  }
+
+  input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5865F2;
+    color: #fff;
+    cursor: pointer;
+  }

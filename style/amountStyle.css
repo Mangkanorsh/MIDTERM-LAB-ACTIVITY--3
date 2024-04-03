@@ -1,0 +1,80 @@
+ /* Base styles for dark theme */
+ body {
+    background-color: #36393F;
+    color: #fff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Form container styles */
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .form-box {
+    background-color: #202225;
+    border-radius: 5px;
+    padding: 30px;
+  }
+
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #495057;
+  }
+
+  th,
+  td {
+    border: 1px solid #495057;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #36393F;
+    color: #ccc;
+  }
+
+  /* Form element styles */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  input[type="text"],
+  input[type="radio"],
+  input[type="checkbox"] {
+    background-color: #36393F;
+    border: 1px solid #495057;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  input[type="submit"],
+  input[type="reset"] {
+    background-color: #5865F2;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+
+  input[type="submit"]:hover,
+  input[type="reset"]:hover {
+    background-color: #434D79;
+  }
