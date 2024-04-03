@@ -25,11 +25,12 @@
 
         <?php 
             if (isset($_POST["username"]) and isset($_POST["password"])) {// this will check if there was username and password input
-
-                $username = "Admin";
+                $inputusername = htmlspecialchars ($_POST["username"]);
+                $inputpassword = htmlspecialchars ($_POST["password"]);
+                $username = "admin";
                 $password = "passq";
 
-                if ($username === $_POST["username"] && $password === $_POST["password"] ) {
+                if ($username === $inputusername && $password === $inputpassword ) {
                     echo "<p>Password Accepted...</p>";
                     echo "<a href='loanAmount.php'> Loan Page </a>";
                 } else {
