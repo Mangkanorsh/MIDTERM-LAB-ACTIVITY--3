@@ -26,8 +26,8 @@
         <?php 
             if (isset($_POST["username"]) and isset($_POST["password"])) {// this will check if there was username and password input
 
-                $username = "norsh";
-                $password = "loves";
+                $username = "Admin";
+                $password = "passq";
 
                 if ($username === $_POST["username"] && $password === $_POST["password"] ) {
                     echo "<p>Password Accepted...</p>";
