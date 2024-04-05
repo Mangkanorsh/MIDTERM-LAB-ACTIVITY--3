@@ -11,11 +11,11 @@
         <form action="login.php" method="post">
             <div class="form-group">
                 <label class="form-label" for="username">Username:</label>
-                <input type="text" name="username" id="username" required>
+                <input type="text" name="username" id="username" placeholder="Username" required>
             </div>
             <div class="form-group">
                 <label class="form-label" for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <div class="form-group">
                 <input type="submit" name="accept" value="Accept">
