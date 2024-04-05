@@ -23,21 +23,44 @@
             </div>
         </form>
 
-        <?php 
-            if (isset($_POST["username"]) and isset($_POST["password"])) {// this will check if there was username and password input
-                $inputusername = htmlspecialchars ($_POST["username"]);
-                $inputpassword = htmlspecialchars ($_POST["password"]);
-                $username = "admin";
-                $password = "passq";
+        <?php
+            // Define the array of usernames and passwords
+            $userData = [
+                'admin' => 'pass1',
+                'user1' => 'pass2',
+                'user2' => 'pass3',
+                'user3' => 'pass3',
+                'user4' => 'pass3',
+                'user5' => 'pass4',
+                'user6' => 'pass5',
+                'user7' => 'pass6',
+                'user8' => 'pass7',
+                'user9' => 'pass8',
+                'norsh' => 'pass9',
+                // Add more username-password pairs as needed
+            ];
+            // Check if form is submitted and username/password are provided
+            if (isset($_POST["username"]) and isset($_POST["password"])) {
 
-                if ($username === $inputusername && $password === $inputpassword ) {
-                    echo "<p>Password Accepted...</p>";
-                    echo "<a href='loanAmount.php'> Loan Page </a>";
+                // Sanitize and get the submitted username and password
+                $username = htmlspecialchars ($_POST["username"]);
+                $password = htmlspecialchars ($_POST["password"]);
+
+                // Check if username exists in the array
+                if (isset($userData[$username])) {
+                    // Check if password matches
+                    if ($userData[$username] === $password) {
+                        // Login successful
+                        echo "<p>Password Accepted...</p>";
+                        echo "<a href='loanAmount.php'> Loan Page </a>";
+                    } else {
+                        // Incorrect password or username
+                        echo "<p class='error'>Username and / or password does not match</p>";
+                    }
                 } else {
-                    echo "<p class='error'>Username and / or password does not match</p>";
+                    // Username not found
+                    echo "<p class='error'>Please enter username and / or password</p>";  
                 }
-            } else {
-                echo "<p class='error'>Please enter username and / or password</p>";  
             }
         ?>
     </div>

@@ -10,27 +10,31 @@
   <div class="loan-container">
     <h2>Loan Information</h2>
     <?php
-              if($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Check if all required fields are set
-                if(isset($_POST["amount"]) && isset($_POST["terms"]) || isset($_POST["memberType"])) {
-                    // Sanitize and validate input
-                    $loanAmount = floatval($_POST["amount"]);
-                    $paymentTerms = floatval($_POST["terms"]);
-                    // Here we can set a default value for memberType if it's not provided
-                    $memberType = isset($_POST["memberType"]) ? floatval($_POST["memberType"]) : 0;
+        // Check if the request method is POST
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Check if all required fields are set (amount, terms, memberType)
+            if(isset($_POST["amount"]) && isset($_POST["terms"]) || isset($_POST["memberType"])) {
+
+                // Sanitize and validate input: convert amount and terms to float
+                $loanAmount = floatval($_POST["amount"]);
+                $paymentTerms = floatval($_POST["terms"]);
+
+                // Here we can set a default value for memberType if it's not provided
+                $memberType = isset($_POST["memberType"]) ? floatval($_POST["memberType"]) : 0; //
     
-                    // Validate if the loan amount and payment terms are greater than 0
-                    if ($loanAmount > 0 && $paymentTerms > 0) {
-                        if ($memberType != 0.05) { // Officer
-                            $memberType = 0.10;
-                        }
-                        // Calculate interest, total amount, and monthly dues
-                        $interest = $loanAmount * $memberType;
-                        $totalAmount = $loanAmount + $interest;
-                        $monthlyDues = $totalAmount / $paymentTerms;
+                // Validate if the loan amount and payment terms are greater than 0
+                if ($loanAmount > 0 && $paymentTerms > 0) {
+                        
+                    // Determine the member type and set the corresponding interest rate
+                    if ($memberType != 0.05) { // If not an officer
+                        $memberType = 0.10; // Set as a member
+                    }
+                    // Calculate interest, total amount, and monthly dues
+                    $interest = $loanAmount * $memberType;
+                    $totalAmount = $loanAmount + $interest;
+                    $monthlyDues = $totalAmount / $paymentTerms;
     ?>
     <form action="loanConfirmation.php" method="post">
-      <table>
       <table border="1px">
                 <tr>
                     <th>Date:</th>
@@ -48,12 +52,9 @@
                     <th>Terms of Payment:</th>
                     <td><?php echo $paymentTerms." Months"; ?></td>
                 </tr>
-                <?php               
-                    if($memberType == 0.05){
-                        $interestText = "Interest (5%)";
-                    }else{
-                        $interestText = "Interest (10%)";                        
-                    }
+                <?php
+                    // Assigns the appropriate interest text based on the value of $memberType               
+                    $interestText = ($memberType == 0.05) ? "Interest (5%)" : "Interest (10%)"; 
                 ?>
                 <tr>
                     <th><?php echo "$interestText"; ?></th>
@@ -81,7 +82,6 @@
                 exit();
             }
         ?>
-        </table>
       <div class="form-buttons">
         <input type="submit" name="submit" value="Submit">
         <input type="button" value="Back" onclick="history.go(-1);">
